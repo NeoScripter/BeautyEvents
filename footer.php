@@ -33,7 +33,7 @@
         </div>
         <div class="footer-flex-group-bottom">
             <div class="expanded-footer-div">
-                <p>©2024 Next Beauty Event &copy;</p>
+                <p>©2024-<?php echo date('Y'); ?> Next Beauty Event &copy;</p>
                 <p>ALL RIGHTS RESERVED</p>
             </div>
             <a class="privacy-policy-link__footer" href="https://nextbeautyevent.com/privacy-policy/">Privacy Policy</a>
