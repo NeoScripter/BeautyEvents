@@ -1,0 +1,458 @@
+<?php
+
+get_header();
+?>
+
+<?php get_template_part('includes/section', 'reg.popup'); ?>
+
+<div class="popup-menu-overlay">
+    <div class="popup-menu">
+        <div class="popup-menu__logo-wrapper">
+            <img src="http://nextbeautyevent.com/wp-content/uploads/2024/07/logo.webp" alt="logo" class="logo-small">
+            <img src="<?php echo get_template_directory_uri() .
+                            "/assets/images/svgs/burger-menu-open.svg"; ?>" alt="burger-menu" class="close-burger-menu">
+        </div>
+        <nav class="nav nav-secondary">
+            <ul class="flex-sb">
+                <li><a href="#events">Events</a></li>
+                <li><a href="#about-us">About us</a></li>
+                <li><a href="#partners">Our partners</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+            </ul>
+        </nav>
+        <div class="popup-menu__btn-wrapper">
+            <div class="flex-sb">
+                <?php if (is_user_logged_in()) : ?>
+                    <a href="<?php echo wp_logout_url(home_url()); ?>" class="btn-header login-btn">Log out</a>
+                    <?php $current_user = wp_get_current_user();; ?>
+                    <div class="user-name">
+                        <img src="<?php echo get_template_directory_uri() .
+                                        "/assets/images/svgs/user.svg"; ?>" alt="user profile" class="userprofile-svg"> Hello, <?php echo esc_html($current_user->display_name) . '!'; ?>
+                    </div>
+                <?php else : ?>
+                    <button class="btn-header login-btn" id="header-login-btn">Log in</button>
+                    <button class="btn-header signup-btn" id="header-signup-btn">Sign up</button>
+                <?php endif; ?>
+            </div>
+            <a href="#contacts" class="btn-header host-event-btn">Host your event <?php include get_template_directory() .
+                                                                                        "/assets/images/svgs/top-right-corner-arrow.svg"; ?></a>
+        </div>
+        <div>
+            <div class="popup-menu-bottom">
+                <div>
+                    <h3>Reach out to us</h3>
+                    <p>and share details about your project.</p>
+                </div>
+                <div>
+                    <h4>E-mail:</h4>
+                    <p>beautytd2022@gmail.com</p>
+                </div>
+                <div class="flex-sb svg-group">
+                    <a class="header-svg-link" href="https://t.me/beauty_training_design"><?php include get_template_directory() .
+                                                                                                "/assets/images/svgs/telegram.svg"; ?></a>
+                    <a class="header-svg-link insta" href="https://www.instagram.com/beauty4online?igsh=MW53bW96djlmam9pZQ=="><?php include get_template_directory() .
+                                                                                                                                    "/assets/images/svgs/insta.svg"; ?></a>
+                    <a class="header-svg-link" href="https://www.facebook.com/profile.php?id=100088276970688&mibextid=LQQJ4d"><?php include get_template_directory() .
+                                                                                                                                    "/assets/images/svgs/fb.svg"; ?></a>
+                    <a class="header-svg-link" href="https://pin.it/2xZ05rpes"><?php include get_template_directory() .
+                                                                                    "/assets/images/svgs/pininterest.svg"; ?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper" id="banner">
+    <div class="banner">
+        <div class="banner-content">
+            <h1 class="main-heading"><span class="main-heading-span-large">ALL UPCOMING</span><br>BEAUTY <span class="pink-font-color">EVENTS</span></h1>
+            <div class="cookie-policy">
+                <p>This website uses cookies. Find out more in the
+                    <?php wp_nav_menu([
+                        "theme_location" => "top-menu",
+                        "items_wrap" => '%3$s',
+                    ]); ?> section, including how to opt-out.</p>
+                <button class="accept-cookies-btn">Accept all cookies</button>
+            </div>
+        </div>
+    </div>
+</div>
+<main class="main centering">
+    <section class="event-list" id="events">
+        <form method="get" action="<?php echo esc_url(home_url("/") . '#events'); ?>" class="event-filter-form">
+            <?php include get_template_directory() . "/includes/filter-content.php"; ?>
+        </form>
+        <?php $initial_count = 9; ?>
+        <div class="event-grid-group">
+            <?php echo render_events($initial_count); ?>
+        </div>
+        <button id="see-more-button" data-count="<?php echo $initial_count; ?>">See More <?php include get_template_directory() . "/assets/images/svgs/top-right-corner-arrow.svg"; ?></button>
+    </section>
+
+
+    <section>
+        <h2 class="ads-heading flex-sb">Broaden your network
+            <div class="arrow-holder flex-sb">
+                <div class="carousel-arrow prev"><?php include get_template_directory() . "/assets/images/svgs/carousel-arrow-left.svg"; ?></div>
+                <div class="carousel-arrow next"><?php include get_template_directory() . "/assets/images/svgs/carousel-arrow-right.svg"; ?></div>
+            </div>
+        </h2>
+        <div class="carousel-wrapper" id="partners">
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <?php
+                    $num_ads = 20;
+                    $ads_found = false;
+
+                    for ($i = 1; $i <= $num_ads; $i++) {
+
+                        $image = get_field("partner_ad_image_" . $i);
+                        $link = get_field("partner_ad_link_" . $i);
+
+                        if (!$image || !$link) {
+                            break;
+                        }
+
+                        $ads_found = true;
+                    ?>
+                        <li class="carousel-slide">
+                            <a href="<?php echo esc_url($link); ?>">
+                                <img src="<?php echo esc_url(is_array($image) ? $image["url"] : $image); ?>"
+                                    alt="<?php echo esc_attr(is_array($image) ? $image["alt"] : ""); ?>">
+                            </a>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="mt-8">
+        <div
+            class="px-2 xs:px-7 sm:px-10 md:px-3 lg:px-10 bg-white py-4 md:py-8 max-w-[1616px] mx-auto text-primary-black">
+            <h3
+                class="font-headings text-2xl text-center text-balance lg:text-4xl 2xl:text-5xl mb-8 sm:mb-4 text-primary-black">
+                READY-MADE TRAINING MATERIALS FOR BEAUTY TRANERS:
+            </h3>
+
+            <h2
+                class="font-headings text-primary-pink text-[2rem] text-center text-balance lg:text-6xl 2xl:text-8xl mb-8">
+                Stylish Training That Brings Profit
+            </h2>
+
+            <div
+                class="grid gap-10 md:grid-cols-2 xl:grid-cols-4"
+                id="grid-output">
+
+                <?php
+                // Ссылки для каждой картинки (замени на реальные URL)
+                $card_links = array(
+                    'https://beautytrainingdesign.com/collections/pmu-basic-course',  // 01
+                    'https://beautytrainingdesign.com/collections/lash',              // 02
+                    'https://beautytrainingdesign.com/products/table-of-pigments-professional-reference-chart-a4-pdf-download-%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F',  // 03
+                    'https://beautytrainingdesign.com/collections/1',                 // 04
+                );
+
+                $images = get_field('training_carousel');
+                $count = 1;
+                ?>
+                <?php if ($images): ?>
+                    <?php foreach ($images as $index => $image): ?>
+                        <?php $link = isset($card_links[$index]) ? $card_links[$index] : '#'; ?>
+
+                        <a href="<?= esc_url($link); ?>" target="_blank" class="max-w-80 mx-auto w-full carosel-card md:flex md:flex-col block hover:opacity-90 transition-opacity">
+                            <div class="overflow-hidden aspect-square relative rounded-tr-xl rounded-tl-xl">
+                                <img
+                                    src="<?= esc_url(is_array($image) ? $image['url'] : $image); ?>"
+                                    alt="<?= esc_attr(is_array($image) ? $image['alt'] : ''); ?>"
+                                    class="w-full object-cover object-center h-full" />
+                            </div>
+                            <div
+                                class="bg-primary-pink z-10 w-4/5 mx-auto text-primary-black/50 pb-1 text-5xl text-center rounded-br-xl rounded-bl-xl relative">
+                                <?php echo str_pad($count++, 2, '0', STR_PAD_LEFT); ?>
+                                <div
+                                    class="absolute bg-primary-pink bottom-3 -z-10 w-24 h-14 left-1/2 -translate-x-1/2"
+                                    style="border-radius: 50% 50% 50% 50% / 100% 100% 0% 0%;"></div>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+
+
+
+            </div>
+
+            <a
+                href="#contact-form-bottom"
+                class="flex mx-auto w-max text-lg items-center justify-center gap-2 my-12 lg:my-16 xl:mt-20 rounded-full border border-primary-pink py-3 px-6 font-medium uppercase text-primary-pink transition-colors duration-300 ease-in-out hover:bg-primary-pink hover:text-white">
+                <span>free consultation</span>
+                <img
+                    src="<?php echo get_template_directory_uri() .
+                                "/assets/images/svgs/arrow-btn.svg"; ?>"
+                    class="w-3 h-3"
+                    alt="pink arrow" />
+            </a>
+
+            <h3
+                class="font-headings text-2xl text-center uppercase text-balance lg:text-4xl 2xl:text-5xl mb-8 sm:mb-4 text-primary-black">
+                We empower beauty professionals to reach new heights
+                <span class="text-primary-pink">in income and prestige</span>
+            </h3>
+
+            <div
+                class="text-balance text-center uppercase font-medium whitespace-pre flex flex-wrap justify-center my-8 lg:my-10">
+                <span>launch. packaging. </span>
+                <span>branding. promotion. </span>
+            </div>
+
+            <?php
+            $before_image = get_field("before_image");
+            $after_image = get_field("after_image");; ?>
+            <div
+                class="flex flex-col items-center gap-10 lg:gap-0 my-8 lg:flex-row lg:my-40 2xl:w-4/5 mx-auto">
+                <div class="w-4/5 md:w-92 md:mr-auto lg:w-auto">
+                    <p
+                        class="font-bold text-sm xs:text-base uppercase text-center mb-4 md:mb-8 lg:mb-12 md:text-xl">
+                        Trusted by the majority
+                    </p>
+                    <img
+                        src="<?php echo $before_image['url']; ?>"
+
+                        alt="<?php echo $before_image['alt']; ?>" />
+                </div>
+                <div class="w-4/5 md:w-92 md:ml-auto lg:w-auto relative">
+                    <p
+                        class="font-bold text-sm xs:text-base uppercase text-center mb-4 md:text-xl text-primary-pink tracking-wider md:absolute md:-top-14 md:left-1/2 md:-translate-x-1/2">
+                        OUR DOCUMENT
+                    </p>
+                    <img
+                        src="<?php echo $after_image['url']; ?>"
+                        alt="<?php echo $after_image['alt']; ?>" />
+                </div>
+            </div>
+
+            <div
+                class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(280px,1fr))] lg:grid-cols-2"
+                id="advantages-grid">
+                <?php $order = 1; ?>
+                <?php if (have_rows('benefit_cards')): while (have_rows('benefit_cards')): the_row(); ?>
+                        <div
+                            class="p-4 xl:p-6 rounded-2xl bg-dark-gray h-66 flex w-full flex-col justify-between text-white transition-colors duration-300 hover:bg-primary-pink active:bg-primary-pink focus:bg-primary-pink">
+                            <div class="flex items-start justify-between gap-1">
+                                <div
+                                    class="uppercase font-semibold text-xl lg:text-2xl advantages-title text-balance"><?php echo get_sub_field('title'); ?></div>
+                                <div
+                                    class="p-2 rounded-full bg-white flex items-center justify-center text-primary-pink w-10 h-10 text-sm shrink-0 advantages-order"><?php echo '0' . $order++; ?></div>
+                            </div>
+
+                            <p
+                                class="text-sm advantages-description xl:max-w-3/4 lg:text-base"><?php echo get_sub_field('content'); ?></p>
+                        </div>
+                <?php endwhile;
+                endif; ?>
+            </div>
+
+            <div
+                class="overflow-x-auto mt-8 lg:mt-14 2xl:mt-20 scrollbar-hidden select-none">
+                <div
+                    class="flex gap-4 w-[1300px] xl:w-[1400px] xl:gap-6 mx-auto"
+                    id="benefits-grid">
+                    <?php if (have_rows('result_slider')): while (have_rows('result_slider')): the_row(); ?>
+                            <div
+                                class="p-6 rounded-2xl border border-gray-200 w-70 lg:w-100">
+                                <span
+                                    class="font-medium uppercase mb-4 flex items-end justify-center gap-2">
+                                    <span class="benefits-prefix block"><?php echo get_sub_field('prefix'); ?></span>
+                                    <span
+                                        class="text-primary-pink text-6xl font-bold benefits-number"><?php echo get_sub_field('number'); ?></span>
+                                </span>
+                                <div
+                                    class="text-center text-balance text-sm benefits-content"><?php echo get_sub_field('content'); ?></div>
+                            </div>
+                    <?php endwhile;
+                    endif; ?>
+                </div>
+            </div>
+            <div
+                class="flex items-center gap-2 mt-8 mx-auto w-max xl:hidden">
+                <img
+                    src="<?php echo get_template_directory_uri() .
+                                "/assets/images/svgs/card-scroll-left.svg"; ?>"
+                    alt="scroll to the left"
+                    class="w-8 h-5" />
+                <img
+                    src="<?php echo get_template_directory_uri() .
+                                "/assets/images/svgs/card-scroll-right.svg"; ?>"
+                    alt="scroll to the right"
+                    class="w-8 h-5" />
+            </div>
+
+            <h3
+                class="font-headings text-2xl text-center uppercase text-balance lg:text-4xl 2xl:text-5xl mb-16 text-primary-black mt-8 lg:mt-14 2xl:mt-20">
+                PLACE YOUR ORDER IN 3 STEPS:
+            </h3>
+
+            <div
+                class="flex flex-col items-center gap-12 lg:gap-16 xl:flex-row xl:gap-4">
+                <div class="p-4 border border-slate-500 rounded-xl w-4/5 h-38">
+                    <div
+                        class="relative -top-12 bg-white rounded-full aspect-square flex items-center justify-center text-2xl p-2 border border-slate-500 w-17 h-17 mx-auto">
+                        1
+                    </div>
+                    <div
+                        class="uppercase font-semibold text-balance text-center text-xl md:text-2xl relative -top-5 md:-top-0">
+                        Choose your
+                        <span class="text-primary-pink">materials</span>
+                    </div>
+                </div>
+                <div class="p-4 border border-slate-500 rounded-xl w-4/5 h-38">
+                    <div
+                        class="relative -top-12 bg-white rounded-full aspect-square flex items-center justify-center text-2xl p-2 border border-slate-500 w-17 h-17 mx-auto">
+                        2
+                    </div>
+                    <div
+                        class="uppercase font-semibold text-balance text-center text-xl md:text-2xl relative -top-5 md:-top-0">
+                        Adapt them
+                        <span class="text-primary-pink">to your brand</span>
+                    </div>
+                </div>
+                <div class="p-4 border border-slate-500 rounded-xl w-4/5 h-38">
+                    <div
+                        class="relative -top-12 bg-white rounded-full aspect-square flex items-center justify-center text-2xl p-2 border border-slate-500 w-17 h-17 mx-auto">
+                        3
+                    </div>
+                    <div
+                        class="uppercase font-semibold text-balance text-center text-xl md:text-2xl relative -top-10 md:-top-5">
+                        Receive your ready-to-use guide in
+                        <span class="text-primary-pink">just 3 days!</span>
+                    </div>
+                </div>
+            </div>
+
+            <a
+                href="#contact-form-bottom"
+                class="flex mx-auto text-lg items-center justify-center gap-2 my-12 lg:my-16 xl:mt-20 text-balance text-center lg:w-max md:max-w-max rounded-full border border-primary-pink py-3 px-6 font-medium uppercase text-primary-pink transition-colors duration-300 ease-in-out hover:bg-primary-pink hover:text-white">
+                <span>Start TRAIN with the best training materials now</span>
+                <img
+                    src=" <?php echo get_template_directory_uri() .
+                                "/assets/images/svgs/arrow-btn.svg"; ?>"
+                    class="w-3 h-3"
+                    alt="pink arrow" />
+            </a>
+
+            <h3
+                class="font-headings text-2xl text-center uppercase text-balance lg:text-4xl 2xl:text-5xl lg:my-12 mb-6 text-primary-black">
+                Our clients
+            </h3>
+
+            <div class="mb-8">
+                <?php
+                $clients = get_field('client_images');
+
+                if ($clients): ?>
+                    <div
+                        class="grid gap-2 lg:gap-4 grid-cols-2 lg:grid-cols-none lg:grid-flow-col overflow-x-auto scrollbar-hidden justify-start">
+                        <?php foreach ($clients as $image): ?>
+
+                            <div class="lg:w-88 overflow-clip aspect-video">
+                                <img
+                                    src="<?= esc_url(is_array($image) ? $image['url'] : $image); ?>"
+                                    alt="<?= esc_attr(is_array($image) ? $image['alt'] : ''); ?>"
+                                    class="object-center object-cover h-full w-full" />
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+                <div
+                    class="hidden lg:flex items-center gap-2 mt-8 mx-auto w-max xl:hidden">
+                    <img
+                        src="<?php echo get_template_directory_uri() .
+                                    "/assets/images/svgs/card-scroll-left.svg"; ?>"
+                        alt="scroll to the left"
+                        class="w-8 h-5" />
+
+
+
+                    <img
+                        src="<?php echo get_template_directory_uri() .
+                                    "/assets/images/svgs/card-scroll-right.svg"; ?>"
+                        alt="scroll to the right"
+                        class="w-8 h-5" />
+                </div>
+            </div>
+
+            <h3
+                class="font-headings text-2xl text-center uppercase text-balance lg:text-4xl 2xl:text-5xl mb-6 lg:my-12 text-primary-pink">
+                Reviews
+            </h3>
+
+            <div>
+                <?php
+                $reviews = get_field('review_images');
+
+                if ($reviews): ?>
+                    <div
+                        class="grid gap-2 lg:gap-4 grid-flow-col overflow-x-auto scrollbar-hidden justify-start">
+                        <?php foreach ($reviews as $image): ?>
+
+                            <div class="w-92 lg:w-88 overflow-clip h-125 lg:h-145">
+                                <img
+                                    src="<?= esc_url(is_array($image) ? $image['url'] : $image); ?>"
+                                    alt="<?= esc_attr(is_array($image) ? $image['alt'] : ''); ?>"
+                                    class="object-center object-contain h-full w-full" />
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+
+                <div
+                    class="flex items-center gap-2 mt-8 mx-auto w-max xl:hidden">
+                    <img
+                        src="<?php echo get_template_directory_uri() .
+                                    "/assets/images/svgs/card-scroll-left.svg"; ?>"
+                        alt="scroll to the left"
+                        class="w-8 h-5" />
+                    <img
+                        src="<?php echo get_template_directory_uri() .
+                                    "/assets/images/svgs/card-scroll-right.svg"; ?>"
+                        alt="scroll to the right"
+                        class="w-8 h-5" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-us" id="contacts">
+        <div class="contact-us-content">
+            <h3>Get a free consultation</h3>
+            <p>Looking for a one-on-one consultation, partnership opportunities, or event hosting?</p>
+            <img src="http://nextbeautyevent.com/wp-content/uploads/2024/07/image-bottom-scaled.webp" alt="Five models with pale skin and pastel-colored hair, each styled in high-neck satin garments in shades of blue, pink, and white. The models are arranged in a close, symmetrical formation, exuding a serene and ethereal aesthetic against a soft blue background.">
+            <div class="form-content-flex-group">
+                <div class="div">
+                    <p>E-mail:</p>
+                    <p>beautytd2022@gmail.com</p>
+                </div>
+                <div class="form-svg-group">
+                    <a class="form-svg-link" href="https://t.me/beauty_training_design"><?php include get_template_directory() . '/assets/images/svgs/telegram.svg'; ?></a>
+                    <a class="form-svg-link insta" href="https://www.instagram.com/beauty4online?igsh=MW53bW96djlmam9pZQ=="><?php include get_template_directory() . '/assets/images/svgs/insta.svg'; ?></a>
+                    <a class="form-svg-link" href="https://www.facebook.com/profile.php?id=100088276970688&mibextid=LQQJ4d"><?php include get_template_directory() . '/assets/images/svgs/fb.svg'; ?></a>
+                    <a class="form-svg-link" href="https://pin.it/2xZ05rpes"><?php include get_template_directory() . '/assets/images/svgs/pininterest.svg'; ?></a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-wrapper" id="contact-form-bottom">
+            <?php echo do_shortcode('[contact-form-7 id="6e43614" title="Contact form 1"]'); ?>
+        </div>
+    </section>
+</main>
+
+
+<?php get_footer(); ?>
