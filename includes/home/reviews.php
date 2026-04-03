@@ -10,14 +10,14 @@
 
         if ($reviews): ?>
             <div
-                class="grid gap-2 lg:gap-4 grid-flow-col overflow-x-auto scrollbar-hidden justify-start">
+                class="grid gap-2 lg:gap-4 grid-flow-col overflow-x-auto scrollbar-hidden items-stretch justify-start">
                 <?php foreach ($reviews as $image): ?>
 
-                    <div class="w-92 lg:w-88 overflow-clip h-125 lg:h-145">
+                    <div class="w-92 lg:w-88 overflow-clip rounded-sm bg-[#f2f2f2] h-125 lg:h-145">
                         <img
                             src="<?= esc_url(is_array($image) ? $image['url'] : $image); ?>"
                             alt="<?= esc_attr(is_array($image) ? $image['alt'] : ''); ?>"
-                            class="object-center object-contain h-full w-full" />
+                            class="object-center object-contain size-full" />
                     </div>
                 <?php endforeach; ?>
             </div>
