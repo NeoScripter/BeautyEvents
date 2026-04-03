@@ -1,50 +1,70 @@
 <?php
 
-// Load stylesheets
+define('VITE_DEV_SERVER', 'https://localhost:5173');
+
+// Stylesheets
 function load_css() {
-    wp_enqueue_style( 'local-fonts', get_template_directory_uri() . '/assets/fonts/local-fonts.css', array(), null );
-   /*  wp_register_style('reset', get_template_directory_uri() . '/assets/css/reset.min.css', [], false, 'all');
-    wp_enqueue_style('reset'); */
-    wp_register_style('tailwind', get_template_directory_uri() . '/assets/css/index-tw.css', [], false, 'all');
-    wp_enqueue_style('tailwind');
-    wp_register_style('style', get_template_directory_uri() . '/assets/css/style.min.css', [], false, 'all');
-    wp_enqueue_style('style');
-}
-add_action('wp_enqueue_scripts', 'load_css');
+    wp_enqueue_style(
+        'local-fonts',
+        get_template_directory_uri() . '/assets/fonts/local-fonts.css',
+        [],
+        null
+    );
 
-// Load JavaScript
+    $dist_path = get_template_directory() . '/assets/dist/assets';
+    wp_enqueue_style(
+        'theme-style',
+        get_template_directory_uri() . '/assets/dist/assets/style.css',
+        [],
+        file_exists( $dist_path . '/style.css' ) ? filemtime( $dist_path . '/style.css' ) : '1.0.0'
+    );
+}
+add_action( 'wp_enqueue_scripts', 'load_css' );
+
+// JavaScript
 function load_js() {
-    wp_register_script('script.js', get_template_directory_uri() . '/assets/js/script.min.js', [], false, true);
-    wp_enqueue_script('script.js');
-    wp_register_script('index-tw.js', get_template_directory_uri() . '/assets/js/index-tw.js', [], false, true);
-    wp_enqueue_script('index-tw.js');
-}
-add_action('wp_enqueue_scripts', 'load_js');
+    $dist_file  = get_template_directory() . '/assets/dist/assets/main.js';
+    $dist_url   = get_template_directory_uri() . '/assets/dist/assets/main.js';
+    $dev_url    = VITE_DEV_SERVER . '/assets/src/js/main.js';
 
-function enqueue_custom_scripts() {
-    wp_enqueue_script('jquery');
-}
+    wp_enqueue_script( 'jquery' );
 
-add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
+    if ( file_exists( $dist_file ) ) {
+        // Production — load built file
+        wp_enqueue_script(
+            'theme-script',
+            $dist_url,
+            [ 'jquery' ],
+            filemtime( $dist_file ),
+            true
+        );
+    } else {
+        // Dev — load from Vite dev server
+        wp_enqueue_script( 'vite-client', VITE_DEV_SERVER . '/@vite/client', [], null, false );
+        wp_enqueue_script( 'theme-script', $dev_url, [ 'jquery' ], null, true );
+    }
 
-function enqueue_popup_scripts() {
-    wp_enqueue_script('popup-script', get_template_directory_uri() . '/assets/js/popup.min.js', array('jquery'), null, true);
-
-    wp_localize_script('popup-script', 'popupData', array(
+    // Attach all localized data to theme-script
+    wp_localize_script( 'theme-script', 'popupData', [
         'is_user_logged_in' => is_user_logged_in(),
-    ));
-}
-add_action('wp_enqueue_scripts', 'enqueue_popup_scripts');
+    ]);
 
-function enqueue_ajax_form_handling_scripts() {
-    wp_enqueue_script('custom-ajax-script', get_template_directory_uri() . '/assets/js/ajax-reg.min.js', array('jquery'), null, true);
-    wp_localize_script('custom-ajax-script', 'ajax_vars', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'registration_nonce' => wp_create_nonce('ajax-registration-nonce'),
-        'login_nonce' => wp_create_nonce('ajax-login-nonce')
-    ));
+    wp_localize_script( 'theme-script', 'ajax_vars', [
+        'ajax_url'           => admin_url( 'admin-ajax.php' ),
+        'registration_nonce' => wp_create_nonce( 'ajax-registration-nonce' ),
+        'login_nonce'        => wp_create_nonce( 'ajax-login-nonce' ),
+    ]);
 }
-add_action('wp_enqueue_scripts', 'enqueue_ajax_form_handling_scripts');
+add_action( 'wp_enqueue_scripts', 'load_js' );
+
+// Mark Vite scripts as type="module"
+function add_module_type( $tag, $handle ) {
+    if ( in_array( $handle, [ 'vite-client', 'theme-script' ] ) ) {
+        return str_replace( 'text/javascript', 'module', $tag );
+    }
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'add_module_type', 10, 2 );
 
 // Theme Options
 add_theme_support('menus');
@@ -55,7 +75,8 @@ add_theme_support('widgets');
 add_image_size('blog-large', 800, 600, true);
 add_image_size('blog-small', 300, 200, true);
 
-function add_custom_classes_to_paragraphs($content) {
+function add_custom_classes_to_paragraphs($content)
+{
     if (is_single() && has_category('event')) {
         $paragraphs = explode('</p>', $content);
 
@@ -74,13 +95,15 @@ function add_custom_classes_to_paragraphs($content) {
 
 // Creating a menu
 
-function remove_menu_container($args = '') {
+function remove_menu_container($args = '')
+{
     $args['container'] = false;
     return $args;
 }
 add_filter('wp_nav_menu_args', 'remove_menu_container');
 
-function strip_ul_class($menu) {
+function strip_ul_class($menu)
+{
     $menu = preg_replace('/<ul[^>]*>/', '', $menu);
     $menu = preg_replace('/<\/ul>/', '', $menu);
     $menu = preg_replace('/<li[^>]*>/', '', $menu);
@@ -89,7 +112,8 @@ function strip_ul_class($menu) {
 }
 add_filter('wp_nav_menu', 'strip_ul_class');
 
-function register_menus() {
+function register_menus()
+{
     register_nav_menus(
         array(
             'top-menu' => 'Header Menu',
@@ -100,22 +124,25 @@ function register_menus() {
 }
 add_action('init', 'register_menus');
 
-function allow_html_in_menu_items($title, $item, $args, $depth) {
+function allow_html_in_menu_items($title, $item, $args, $depth)
+{
     return $item->post_title;
 }
 add_filter('nav_menu_item_title', 'allow_html_in_menu_items', 10, 4);
 
 // Adding svgs
 
-function cc_mime_types($mimes) {
+function cc_mime_types($mimes)
+{
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
-  }
-  add_filter('upload_mimes', 'cc_mime_types');
+}
+add_filter('upload_mimes', 'cc_mime_types');
 
 add_filter('the_content', 'add_custom_classes_to_paragraphs');
 
-function add_event_post_type() {
+function add_event_post_type()
+{
     $args = [
         'labels' => [
             'name' => 'Events',
@@ -123,7 +150,7 @@ function add_event_post_type() {
         ],
         'hierarchical' => true,
         'public' => true,
-	'has_archive' => true,
+        'has_archive' => true,
         'show_in_rest' => true,
         'rest_base' => 'events',
         'menu_icon' => 'dashicons-calendar-alt',
@@ -136,7 +163,8 @@ function add_event_post_type() {
 
 add_action('init', 'add_event_post_type');
 
-function add_past_event_post_type() {
+function add_past_event_post_type()
+{
     $args = [
         'labels' => [
             'name' => 'Past Events',
@@ -154,7 +182,8 @@ function add_past_event_post_type() {
 }
 add_action('init', 'add_past_event_post_type');
 
-function add_event_taxonomy() {
+function add_event_taxonomy()
+{
     $args = [
         'labels' => [
             'name' => 'Venues',
@@ -168,16 +197,18 @@ function add_event_taxonomy() {
 add_action('init', 'add_event_taxonomy');
 
 
-function hide_admin_bar() {
+function hide_admin_bar()
+{
     add_filter('show_admin_bar', '__return_false');
 }
 
 add_action('after_setup_theme', 'hide_admin_bar');
-function move_past_events_to_new_post_type() {
+function move_past_events_to_new_post_type()
+{
     $current_date = date('Y-m-d');
 
     $query = new WP_Query([
-        'post_type' => 'events', 
+        'post_type' => 'events',
         'posts_per_page' => -1,
         'meta_query' => [
             [
@@ -200,7 +231,8 @@ function move_past_events_to_new_post_type() {
     }
 }
 
-function schedule_past_events_mover() {
+function schedule_past_events_mover()
+{
     if (!wp_next_scheduled('move_past_events')) {
         wp_schedule_event(time(), 'daily', 'move_past_events');
     }
@@ -209,7 +241,8 @@ add_action('wp', 'schedule_past_events_mover');
 
 add_action('move_past_events', 'move_past_events_to_new_post_type');
 
-function render_events($count) {
+function render_events($count)
+{
     $meta_query = ['relation' => 'AND'];
 
     if (!empty($_GET['filter-format'])) {
@@ -273,7 +306,7 @@ function render_events($count) {
         'post_type' => 'events',
         'posts_per_page' => $count,
         'meta_query' => $meta_query,
-        'meta_key' => 'event_date', 
+        'meta_key' => 'event_date',
         'orderby' => 'meta_value',
         'order' => 'ASC',
     ];
@@ -283,7 +316,7 @@ function render_events($count) {
 
     if ($query->have_posts()): ?>
         <?php while ($query->have_posts()): $query->the_post(); ?>
-            <div class="event-wrapper">
+            <div class="event-wrapper rounded-2xl">
                 <div class="event-content">
                     <img src="<?php echo get_field('image'); ?>" alt="<?php the_title(); ?>" class="event-img">
                     <ul class="event-ul">
@@ -323,18 +356,20 @@ function render_events($count) {
 }
 
 
-function load_more_events() {
+function load_more_events()
+{
     $count = isset($_GET['count']) ? intval($_GET['count']) : 11;
 
     echo render_events($count);
-    wp_die(); 
+    wp_die();
 }
 
 add_action('wp_ajax_load_more_events', 'load_more_events');
 add_action('wp_ajax_nopriv_load_more_events', 'load_more_events');
 
 
-function password_mismatch_signup_errors($errors, $sanitized_user_login, $user_email) {
+function password_mismatch_signup_errors($errors, $sanitized_user_login, $user_email)
+{
     if (isset($_POST['user_pass']) && isset($_POST['confirm_pass'])) {
         if ($_POST['user_pass'] !== $_POST['confirm_pass']) {
             $errors->add('password_mismatch', __('The passwords do not match.'));
@@ -344,14 +379,16 @@ function password_mismatch_signup_errors($errors, $sanitized_user_login, $user_e
 }
 add_filter('registration_errors', 'password_mismatch_signup_errors', 10, 3);
 
-function custom_user_register($user_id) {
+function custom_user_register($user_id)
+{
     if (isset($_POST['user_pass'])) {
         wp_set_password($_POST['user_pass'], $user_id);
     }
 }
 add_action('user_register', 'custom_user_register');
 
-function ajax_user_registration_handler() {
+function ajax_user_registration_handler()
+{
     check_ajax_referer('ajax-registration-nonce', 'security');
 
     $errors = array();
@@ -395,7 +432,8 @@ add_action('wp_ajax_nopriv_ajax_user_registration', 'ajax_user_registration_hand
 add_action('wp_ajax_ajax_user_registration', 'ajax_user_registration_handler');
 
 
-function ajax_user_login_handler() {
+function ajax_user_login_handler()
+{
     check_ajax_referer('ajax-login-nonce', 'security');
 
     $errors = array();
@@ -442,7 +480,8 @@ add_action('wp_ajax_nopriv_ajax_user_login', 'ajax_user_login_handler');
 add_action('wp_ajax_ajax_user_login', 'ajax_user_login_handler');
 
 // Add phone number field to user profile
-function add_custom_user_profile_fields($user) { ?>
+function add_custom_user_profile_fields($user)
+{ ?>
     <h3><?php _e("Extra Profile Information", "blank"); ?></h3>
 
     <table class="form-table">
@@ -459,7 +498,8 @@ add_action('show_user_profile', 'add_custom_user_profile_fields');
 add_action('edit_user_profile', 'add_custom_user_profile_fields');
 
 
-function save_custom_user_profile_fields($user_id) {
+function save_custom_user_profile_fields($user_id)
+{
     if (!current_user_can('edit_user', $user_id)) {
         return false;
     }
@@ -469,13 +509,15 @@ add_action('personal_options_update', 'save_custom_user_profile_fields');
 add_action('edit_user_profile_update', 'save_custom_user_profile_fields');
 
 
-function add_user_phone_column($columns) {
+function add_user_phone_column($columns)
+{
     $columns['user_phone'] = 'Phone';
     return $columns;
 }
 add_filter('manage_users_columns', 'add_user_phone_column');
 
-function show_user_phone_column_content($value, $column_name, $user_id) {
+function show_user_phone_column_content($value, $column_name, $user_id)
+{
     if ($column_name == 'user_phone') {
         return get_user_meta($user_id, 'user_phone', true);
     }
@@ -485,13 +527,15 @@ add_action('manage_users_custom_column', 'show_user_phone_column_content', 10, 3
 
 // Custom 
 // === CLAUDE META REGISTER ===
-add_action('init', function() {
+add_action('init', function () {
     foreach (['venue', 'link', 'event_day', 'event_month', 'event_year', 'event_date'] as $field) {
         register_post_meta('events', $field, [
             'show_in_rest' => true,
             'single' => true,
             'type' => 'string',
-            'auth_callback' => function() { return current_user_can('edit_posts'); }
+            'auth_callback' => function () {
+                return current_user_can('edit_posts');
+            }
         ]);
     }
     foreach (['format', 'specialty', 'category'] as $field) {
@@ -504,7 +548,9 @@ add_action('init', function() {
             ],
             'single' => true,
             'type' => 'array',
-            'auth_callback' => function() { return current_user_can('edit_posts'); }
+            'auth_callback' => function () {
+                return current_user_can('edit_posts');
+            }
         ]);
     }
 });

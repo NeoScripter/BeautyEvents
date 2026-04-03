@@ -1,3 +1,14 @@
+@import 'tailwindcss';
+
+@theme {
+    --font-display: 'Poppins', 'serif';
+    --color-primary-pink: oklch(56.85% 0.1946 6.12);
+    --color-dark-gray: oklch(62.68% 0 0);
+    --color-primary-black: oklch(26.03% 0 0);
+    --color-disabled-gray: oklch(88.53% 0 0);
+    --breakpoint-xs: 390px;
+}
+
 :root {
     /* Font sizes */
     --header-nav-fs: 18px;
@@ -39,7 +50,7 @@ html {
 body {
     overflow-x: hidden;
     overflow-x: clip;
-    font-family: "Poppins Regular";
+    font-family: 'Poppins Regular';
     min-height: 100vh;
 }
 
@@ -281,7 +292,7 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
-    font-family: "Poppins SemiBold";
+    font-family: 'Poppins SemiBold';
     font-weight: 600;
     font-size: 24px;
     text-transform: uppercase;
@@ -317,7 +328,7 @@ body {
 .banner-content {
     width: min(100%, 933px);
     margin-inline: auto;
- /*    margin-bottom: 50px; */
+    /*    margin-bottom: 50px; */
 }
 
 .main-heading {
@@ -325,7 +336,7 @@ body {
     font-size: var(--bnr-lower-row-fs);
     line-height: 120%;
     font-weight: 700;
-    font-family: "Poppins Bold";
+    font-family: 'Poppins Bold';
     margin-bottom: 0.2em;
     padding-inline: 0.5em;
 }
@@ -402,7 +413,7 @@ body {
     font-size: 32px;
     text-transform: uppercase;
     color: #1a2c62;
-    font-family: "Poppins SemiBold";
+    font-family: 'Poppins SemiBold';
 }
 
 .policy-wrapper p {
@@ -462,7 +473,7 @@ body {
 }
 
 .footer-nav li a {
-    font-family: "Poppins Regular";
+    font-family: 'Poppins Regular';
     font-size: 18px;
     font-weight: 500;
     line-height: 120%;
@@ -495,7 +506,7 @@ body {
 .footer-flex-group-middle h3 {
     font-size: 24px;
     font-weight: 600;
-    font-family: "Poppins SemiBold";
+    font-family: 'Poppins SemiBold';
     text-transform: uppercase;
     color: var(--pink);
     margin-bottom: 4px;
@@ -596,7 +607,8 @@ body {
     cursor: pointer;
     user-select: none;
 }
-.selected-filters, .empty-search {
+.selected-filters,
+.empty-search {
     margin-left: 150px;
 }
 
@@ -648,7 +660,7 @@ body {
 
 .view-all-button:hover,
 .view-all-button:focus {
-    outline: 2px solid #FFF;
+    outline: 2px solid #fff;
     font-weight: 600;
 }
 
@@ -754,7 +766,7 @@ body {
     font-weight: 600;
 }
 
-.dropdown-label input[type="checkbox"] {
+.dropdown-label input[type='checkbox'] {
     appearance: none;
 }
 
@@ -771,7 +783,7 @@ body {
     translate: 0%;
 }
 
-select[name='filter-month'], 
+select[name='filter-month'],
 select[name='filter-year'] {
     background-color: #fff;
     border: none;
@@ -780,10 +792,9 @@ select[name='filter-year'] {
     width: max-content;
 }
 
-
-select[name='filter-month'] option:is(:hover, :active, :focus-visible), 
+select[name='filter-month'] option:is(:hover, :active, :focus-visible),
 select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
-    background-color: #1A2C62;
+    background-color: #1a2c62;
     color: #fff;
 }
 
@@ -824,10 +835,10 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 }
 
 .nested-dropdown .dropdown-label:is(:hover, :focus) {
-    border-color: #1A2C62;
-    outline: 1.5px solid #1A2C62;
+    border-color: #1a2c62;
+    outline: 1.5px solid #1a2c62;
     color: #fff;
-    background-color: #1A2C62;
+    background-color: #1a2c62;
 }
 
 /* Events */
@@ -878,7 +889,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 }
 
 .green::before {
-    content: "•";
+    content: '•';
     position: absolute;
     left: -0.5em;
     color: #318b30;
@@ -886,7 +897,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 }
 
 .blue::before {
-    content: "•";
+    content: '•';
     position: absolute;
     left: -0.5em;
     color: #1a2c62;
@@ -895,7 +906,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 
 .event-title {
     margin-bottom: 8px;
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     font-size: var(--event-title-fs);
     font-weight: 600;
     line-height: 1.2;
@@ -939,7 +950,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     border: 1.5px solid var(--pink);
     border-radius: 50px;
     padding: 0.4em 1em;
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     align-self: flex-end;
     transition: all 0.3s ease;
 }
@@ -993,7 +1004,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     line-height: 120%;
     letter-spacing: 1.12px;
     text-wrap: balance;
-    font-family: "Poppins SemiBold";
+    font-family: 'Poppins SemiBold';
 }
 
 .ad-img {
@@ -1024,7 +1035,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 
 .ad-img-wrapper:last-of-type:after {
     padding: 0.5em 1.5em 0.5em 0.5em;
-    content: "custom covers for your course";
+    content: 'custom covers for your course';
     position: absolute;
     top: 0;
     left: 0;
@@ -1032,7 +1043,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     bottom: 0;
     z-index: 2;
     color: #fff;
-    font-family: "Poppins SemiBold";
+    font-family: 'Poppins SemiBold';
     font-size: var(--ad-pseudo-el-fs);
     font-weight: 600;
     line-height: 120%;
@@ -1063,7 +1074,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 
 .ads-small-heading {
     color: var(--disable-gray, #888);
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
@@ -1169,14 +1180,14 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     font-weight: 700;
     line-height: 100%;
     text-transform: uppercase;
-    font-family: "Poppins Bold";
+    font-family: 'Poppins Bold';
     margin-bottom: 13px;
 }
 
 .steps-heading-bottom {
     font-size: var(--_steps-heading-bottom-fs);
     align-self: end;
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
@@ -1205,7 +1216,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 
 .steps-heading__right-flex-group h4 {
     font-size: var(--_steps-icon-content-fs);
-    font-family: "Poppins Regular";
+    font-family: 'Poppins Regular';
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -1242,7 +1253,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 
 .gallery__img-desc-content h5 {
     font-size: var(--_steps-gallery-h5-fs);
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     font-weight: 500;
 }
 
@@ -1401,7 +1412,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     color: var(--pink);
     font-weight: 600;
     line-height: 110%;
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     margin-bottom: 10px;
 }
 
@@ -1422,7 +1433,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     font-weight: 500;
     line-height: 120%;
     letter-spacing: 0.48px;
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     margin-bottom: 8px;
 }
 
@@ -1485,7 +1496,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 }
 
 .wpcf7-form {
-    font-family: "Poppins Regular";
+    font-family: 'Poppins Regular';
 }
 
 .wpcf7 form .wpcf7-response-output {
@@ -1493,9 +1504,9 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     margin: 0;
 }
 
-.wpcf7-form input[type="text"],
-.wpcf7-form input[type="tel"],
-.wpcf7-form input[type="email"],
+.wpcf7-form input[type='text'],
+.wpcf7-form input[type='tel'],
+.wpcf7-form input[type='email'],
 .wpcf7-form textarea {
     width: 100%;
     border: none;
@@ -1507,7 +1518,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     max-height: 150px;
 }
 
-.wpcf7-form input[type="submit"] {
+.wpcf7-form input[type='submit'] {
     border-radius: 20px;
     border: 1px solid var(--body-txt, #242424);
     font-size: 18px;
@@ -1522,13 +1533,12 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     cursor: pointer;
 }
 
-.wpcf7-form input[type="submit"]:is(:hover, :focus, :active) {
+.wpcf7-form input[type='submit']:is(:hover, :focus, :active) {
     color: var(--pink);
     border-color: var(--pink);
 }
 
 /* Sign up form */
-
 
 .reg-overlay {
     display: none;
@@ -1538,8 +1548,8 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     color: white;
     overflow-y: auto;
     background-color: rgb(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .reg-wrapper {
@@ -1552,7 +1562,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     padding: 20px;
     background-color: #ebebeb;
     color: #242424;
-    font-family: "Poppins Regular";
+    font-family: 'Poppins Regular';
 }
 
 .login-form {
@@ -1571,7 +1581,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 }
 
 .reg-top h4 {
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     font-size: 32px;
     font-weight: 600;
     line-height: 120%;
@@ -1626,7 +1636,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 .reg-floating-form > h2 {
     color: var(--blue, #1a2c62);
     text-align: center;
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
     font-size: 32px;
     font-weight: 600;
     line-height: 120%;
@@ -1646,7 +1656,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     font-weight: 600;
     line-height: 120%;
     letter-spacing: 0.36px;
-    font-family: "Poppins Regular";
+    font-family: 'Poppins Regular';
 }
 
 .login-switch-btn,
@@ -1657,7 +1667,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     cursor: pointer;
     font-size: 18px;
     font-weight: 600;
-    font-family: "Poppins Regular";
+    font-family: 'Poppins Regular';
 }
 
 .reg-form {
@@ -1666,9 +1676,9 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     flex-direction: column;
 }
 
-.reg-form input:not(input[type="checkbox"]) {
+.reg-form input:not(input[type='checkbox']) {
     color: var(--disable-gray, #888);
-    font-family: "Poppins Regular";
+    font-family: 'Poppins Regular';
     font-size: 18px;
     font-weight: 500;
     line-height: 120%;
@@ -1678,7 +1688,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     border-bottom: 1px solid #888;
 }
 
-.reg-content .reg-form input[type="submit"] {
+.reg-content .reg-form input[type='submit'] {
     margin-top: 16px;
     width: 100%;
     padding: 14px;
@@ -1692,12 +1702,12 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     cursor: pointer;
 }
 
-.signup-form .reg-content .reg-form input[type="submit"] {
+.signup-form .reg-content .reg-form input[type='submit'] {
     background-color: var(--pink);
 }
 
-.login-form .reg-content .reg-form input[type="submit"] {
-    background-color: #1A2C62;
+.login-form .reg-content .reg-form input[type='submit'] {
+    background-color: #1a2c62;
 }
 
 .required-fields-notice {
@@ -1726,15 +1736,19 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 .reg-method-divider {
     --b: 1px;
     --w: 186.5px;
-    --g: 80px; 
+    --g: 80px;
     --c: #888;
 
     width: fit-content;
     color: var(--c);
     font-size: 18px;
-    font-weight: 500; 
-    border-image: linear-gradient(#0000 calc(50% - var(--b) / 2), var(--c) 0 calc(50% + var(--b) / 2), #0000 0) 1/0
-        var(--w) / calc(var(--w) + var(--g));
+    font-weight: 500;
+    border-image: linear-gradient(
+            #0000 calc(50% - var(--b) / 2),
+            var(--c) 0 calc(50% + var(--b) / 2),
+            #0000 0
+        )
+        1/0 var(--w) / calc(var(--w) + var(--g));
     margin-inline: auto;
 }
 
@@ -1761,17 +1775,18 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: "Poppins Medium";
+    font-family: 'Poppins Medium';
 }
 
 .view-all-button {
-    color: #FFF;
+    color: #fff;
     background-color: var(--pink);
     border-color: var(--pink);
 }
 
 @media screen and (max-width: 1540px) {
-    .selected-filters, .empty-search {
+    .selected-filters,
+    .empty-search {
         margin-left: 6vw;
     }
 }
@@ -1790,7 +1805,8 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     .contact-us {
         gap: 24px;
     }
-    .selected-filters, .empty-search {
+    .selected-filters,
+    .empty-search {
         margin-left: 0;
     }
 }
@@ -1809,7 +1825,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     .footer-nav li a {
         font-size: 24px;
         font-weight: 600;
-        font-family: "Poppins SemiBold";
+        font-family: 'Poppins SemiBold';
     }
     .btn-footer {
         flex-grow: 10;
@@ -2068,14 +2084,13 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     }
 }
 
-
 @media screen and (min-width: 430px) {
     .steps-section {
         --_block-offset: 42px 0px 42px 0px;
         --_steps-heading-fs: 48px;
         --_steps-heading-bottom-fs: 40px;
     }
-  /*   .event-flex-group {
+    /*   .event-flex-group {
         flex-direction: row;
     } */
 }
@@ -2112,7 +2127,8 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
         width: 70%;
         margin-left: auto;
     }
-    .steps-gallery-flex-subgroup:nth-of-type(2) > .steps-carousel-track-container {
+    .steps-gallery-flex-subgroup:nth-of-type(2)
+        > .steps-carousel-track-container {
         order: 2;
     }
     .steps-gallery-flex-subgroup > img {
@@ -2155,11 +2171,13 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
         top: calc(290px - 10vw);
         left: 32%;
     }
-    .steps-gallery-flex-subgroup:nth-of-type(2) > .steps-carousel-track-container {
+    .steps-gallery-flex-subgroup:nth-of-type(2)
+        > .steps-carousel-track-container {
         order: 0;
         min-width: 40%;
     }
-    .steps-gallery-flex-subgroup:nth-of-type(3) > .steps-carousel-track-container {
+    .steps-gallery-flex-subgroup:nth-of-type(3)
+        > .steps-carousel-track-container {
         width: 60%;
         margin-left: auto;
     }
@@ -2217,7 +2235,8 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
         gap: 16px;
     }
 
-    .steps-gallery-flex-subgroup:nth-of-type(1) > .steps-carousel-track-container {
+    .steps-gallery-flex-subgroup:nth-of-type(1)
+        > .steps-carousel-track-container {
         width: 332px;
     }
     .steps-gallery-flex-subgroup:nth-of-type(2) {
@@ -2225,12 +2244,14 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
         left: 655px;
         width: 959px;
     }
-    .steps-gallery-flex-subgroup:nth-of-type(2) > .steps-carousel-track-container {
+    .steps-gallery-flex-subgroup:nth-of-type(2)
+        > .steps-carousel-track-container {
         min-width: 0;
         width: 420px;
         flex-shrink: 0;
     }
-    .steps-gallery-flex-subgroup:nth-of-type(3) > .steps-carousel-track-container {
+    .steps-gallery-flex-subgroup:nth-of-type(3)
+        > .steps-carousel-track-container {
         width: 260px;
     }
     .steps-gallery-flex-subgroup:nth-of-type(3) {

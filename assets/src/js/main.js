@@ -1,3 +1,7 @@
+import './index-tw.js';
+import './popup.js';
+import './ajax-reg.js';
+
 document.addEventListener("DOMContentLoaded", () => {
     function initBurgerMenu() {
         const burgerMenuBtn = document.querySelector(".burger-menu");
@@ -311,3 +315,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initCookiePolicyBtn();
 });
+

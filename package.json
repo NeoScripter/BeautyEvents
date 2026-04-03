@@ -1,0 +1,18 @@
+{
+    "devDependencies": {
+        "autoprefixer": "^10.4.27",
+        "browser-sync": "^3.0.4",
+        "glob": "^13.0.6",
+        "tailwindcss": "^4.2.2",
+        "vite": "^8.0.3",
+        "vite-tsconfig-paths": "^6.1.1"
+    },
+    "scripts": {
+        "dev": "vite build --watch",
+        "watch": "browser-sync start --config bs.config.js",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.2.2"
+    }
+}
