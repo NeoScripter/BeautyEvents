@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const seeMoreButton = document.getElementById("see-more-button");
 
         seeMoreButton.addEventListener("click", function () {
-            if (popupData.is_user_logged_in) {
+            // if (popupData.is_user_logged_in) {
                 let currentCount = parseInt(seeMoreButton.getAttribute("data-count"));
                 let newCount = currentCount * 2;
     
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         seeMoreButton.setAttribute("data-count", newCount);
                     })
                     .catch((error) => console.error("Error:", error));
-            }
+            // }
         });
     }
 

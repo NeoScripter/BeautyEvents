@@ -193,7 +193,7 @@ body {
     min-height: 100vh;
     min-height: 100dvh;
     overflow-y: auto;
-    z-index: 11;
+    z-index: 110;
 }
 
 .popup-menu {
@@ -847,7 +847,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     display: grid;
     grid-template-columns: var(--event-grid-columns);
     gap: var(--event-gap);
-    padding-bottom: 16px;
+    padding-bottom: 36px;
 }
 
 .event-wrapper {
@@ -1544,7 +1544,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 20;
+    z-index: 120;
     color: white;
     overflow-y: auto;
     background-color: rgb(0, 0, 0, 0.4);

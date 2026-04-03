@@ -12,7 +12,7 @@ get_header();
         <form method="get" action="<?php echo esc_url(home_url("/") . '#events'); ?>" class="event-filter-form">
             <?php include get_template_directory() . "/includes/filter-content.php"; ?>
         </form>
-        <?php $initial_count = 9; ?>
+        <?php $initial_count = 18; ?>
         <div class="event-grid-group">
             <?php echo render_events($initial_count); ?>
         </div>

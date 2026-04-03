@@ -358,7 +358,7 @@ function render_events($count)
 
 function load_more_events()
 {
-    $count = isset($_GET['count']) ? intval($_GET['count']) : 11;
+    $count = isset($_GET['count']) ? intval($_GET['count']) : 18;
 
     echo render_events($count);
     wp_die();

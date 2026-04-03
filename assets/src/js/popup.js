@@ -7,11 +7,11 @@ jQuery(document).ready(function($) {
             $('.signup-form').fadeIn();
         });
 
-        $('#see-more-button').on('click', event => {
-            event.preventDefault();
-            $('#reg-popup').fadeIn();
-            $('.signup-form').fadeIn();
-        });
+        // $('#see-more-button').on('click', event => {
+        //     event.preventDefault();
+        //     $('#reg-popup').fadeIn();
+        //     $('.signup-form').fadeIn();
+        // });
 
         $('.custom-dropdown-button').on('click', event => {
             event.preventDefault();
