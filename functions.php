@@ -308,7 +308,7 @@ function render_events($count)
         'meta_query' => $meta_query,
         'meta_key' => 'event_date',
         'orderby' => 'meta_value',
-        'order' => 'DESC',
+        'order' => 'ASC',
     ];
 
     $query = new WP_Query($args);

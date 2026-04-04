@@ -631,8 +631,9 @@ body {
 .custom-dropdown-button {
     font-size: var(--search-bar-fs);
     cursor: pointer;
-    padding: 16px 8px;
+    padding: 8px 8px;
     border: 1px solid #242424;
+    border-radius: 3rem;
     background-color: #fff;
     text-align: center;
     width: 160px;
