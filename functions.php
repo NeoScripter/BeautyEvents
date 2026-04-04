@@ -309,6 +309,7 @@ function render_events($count)
         'meta_key' => 'event_date',
         'orderby' => 'meta_value',
         'order' => 'ASC',
+        'post_status' => 'publish'
     ];
 
     $query = new WP_Query($args);
