@@ -1,10 +1,10 @@
 jQuery(document).ready(function ($) {
     if (!popupData.is_user_logged_in) {
-        $('.event-join').on('click', (event) => {
-            event.preventDefault();
-            $('#reg-popup').fadeIn();
-            $('.signup-form').fadeIn();
-        });
+        // $('.event-join').on('click', (event) => {
+        //     event.preventDefault();
+        //     $('#reg-popup').fadeIn();
+        //     $('.signup-form').fadeIn();
+        // });
 
         // $('#see-more-button').on('click', event => {
         //     event.preventDefault();
