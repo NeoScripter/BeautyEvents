@@ -31,7 +31,7 @@ get_header();
             </h3>
 
             <h2
-                class="font-headings text-primary-pink text-2xl text-center text-balance lg:text-4xl 2xl:text-6xl mb-8">
+                class="font-headings text-primary-pink uppercase font-bold text-2xl text-center text-balance lg:text-4xl 2xl:text-6xl mb-8">
                 Stylish Training That Brings Profit
             </h2>
 
