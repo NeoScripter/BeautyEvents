@@ -31,7 +31,7 @@ get_header();
             </h3>
 
             <h2
-                class="font-headings text-primary-pink text-[2rem] text-center text-balance lg:text-6xl 2xl:text-8xl mb-8">
+                class="font-headings text-primary-pink text-2xl text-center text-balance lg:text-4xl 2xl:text-6xl mb-8">
                 Stylish Training That Brings Profit
             </h2>
 
@@ -85,13 +85,6 @@ get_header();
                     alt="scroll to the right"
                     class="w-8 h-5" />
             </div>
-
-            <h3
-                class="font-headings text-2xl text-center uppercase text-balance lg:text-4xl 2xl:text-5xl mb-16 text-primary-black mt-8 lg:mt-14 2xl:mt-20">
-                PLACE YOUR ORDER IN 3 STEPS:
-            </h3>
-
-            <?php get_template_part('includes/home/workflow'); ?>
 
             <a
                 href="#contact-form-bottom"

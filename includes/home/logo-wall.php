@@ -4,7 +4,7 @@
 
     if ($clients): ?>
         <div
-            class="grid gap-2 lg:gap-4 grid-cols-2 lg:grid-cols-none lg:grid-flow-col overflow-x-auto scrollbar-hidden justify-start">
+            class="grid gap-2 lg:gap-4 grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(22rem,1fr))] place-content-center place-items-center">
             <?php foreach ($clients as $image): ?>
 
                 <div class="lg:w-88 overflow-clip aspect-video">
