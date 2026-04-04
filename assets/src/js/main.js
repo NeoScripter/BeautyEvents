@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         seeMoreButton.addEventListener("click", function () {
             // if (popupData.is_user_logged_in) {
-                let currentCount = parseInt(seeMoreButton.getAttribute("data-count"));
+                let currentCount = parseInt(seeMoreButton.getAttribute("data-count")) ?? 18;
                 let newCount = currentCount * 2;
     
                 const currentUrl = new URL(window.location.href);
