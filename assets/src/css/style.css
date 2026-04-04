@@ -20,7 +20,7 @@
     --event-title-fs: 24px;
     --event-desc-fs: 18px;
     --event-gap: 24px;
-    --event-padding: 16px;
+    --event-padding: 26px;
     --event-grid-columns: repeat(3, 1fr);
     --see-more-btn-fs: 18px;
     --join-fs: 18px;
@@ -1897,7 +1897,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
         --event-format-fs: 14px;
         --event-desc-fs: 14px;
         --footer-padding-block: 24px;
-        --event-padding: 8px;
+        --event-padding: 16px;
         --ad-heading-margin-bottom: 24px;
         --ads-grid-gap: 8px;
         --ad-pseudo-el-fs: 42px;
@@ -2074,7 +2074,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 530px) {
     :root {
         --bnr-upper-row-fs: 52px;
         --bnr-lower-row-fs: 52px;
