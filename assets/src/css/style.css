@@ -928,6 +928,14 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible-visible) {
     font-size: 2.2rem;
 }
 
+.pink::before {
+    content: '•';
+    position: absolute;
+    left: -0.5em;
+    color: var(--color-primary-pink);
+    font-size: 2.2rem;
+}
+
 .event-title {
     margin-bottom: 8px;
     font-family: 'Poppins Medium';

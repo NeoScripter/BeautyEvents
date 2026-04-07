@@ -300,7 +300,10 @@ function render_events($count, $offset = 0)
     if (!empty($_GET['filter-country'])) {
         $meta_query[] = [
             'key' => 'venue',
-            'value' => array_map('sanitize_text_field', $_GET['filter-country']),
+            'value' => array_map(
+                'trim',
+                array_map('sanitize_text_field', $_GET['filter-country'])
+            ),
             'compare' => 'IN'
         ];
     }
@@ -336,7 +339,12 @@ function render_events($count, $offset = 0)
                         }
                         if (is_array($formats)) {
                             foreach ($formats as $format) {
-                                echo '<li class="' . (esc_html($format) == 'Online' ? 'green' : 'blue') . '">' . esc_html($format) . '</li>';
+                                $label = match (esc_html($format)) {
+                                    'Online' => 'green',
+                                    'Hybrid' => 'pink',
+                                    default => 'blue'
+                                };
+                                echo '<li class="' . $label . '">' . esc_html($format) . '</li>';
                             }
                         } else {
                             echo '<li>' . esc_html($formats) . '</li>';
