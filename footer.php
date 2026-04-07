@@ -5,7 +5,7 @@
                 <ul>
                     <li><img src="<?php echo get_template_directory_uri() . '/assets/images/footer-red-triangle.png'; ?>" alt="triangle" class="footer-nav-img"></li>
                     <li><a href="/#events">Events</a></li>
-                    <li><a href="/#about-us">About us</a></li>
+                    <li><a href="/about-me">About us</a></li>
                     <li><a href="/#partners">our partners</a></li>
                     <li><a href="/#contacts">contacts</a></li>
                 </ul>
