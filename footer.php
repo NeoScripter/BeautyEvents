@@ -4,15 +4,15 @@
             <nav class="footer-nav">
                 <ul>
                     <li><img src="<?php echo get_template_directory_uri() . '/assets/images/footer-red-triangle.png'; ?>" alt="triangle" class="footer-nav-img"></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#about-us">About us</a></li>
-                    <li><a href="#partners">our partners</a></li>
-                    <li><a href="#contacts">contacts</a></li>
+                    <li><a href="/#events">Events</a></li>
+                    <li><a href="/#about-us">About us</a></li>
+                    <li><a href="/#partners">our partners</a></li>
+                    <li><a href="/#contacts">contacts</a></li>
                 </ul>
             </nav>
             <div class="footer-btn-group">
-                <a href="#contacts" class="btn-footer host-event-btn">Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
-                <a href="#contacts" class="btn-footer host-event-btn">Become our partner<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
+                <a href="/#contacts" class="btn-footer host-event-btn">Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
+                <a href="/#contacts" class="btn-footer host-event-btn">Become our partner<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
             </div>
         </div>
         <div class="footer-flex-group-middle">

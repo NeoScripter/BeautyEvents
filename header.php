@@ -22,14 +22,14 @@
     <img src="http://nextbeautyevent.com/wp-content/uploads/2024/07/logo.webp" alt="logo" class="primary-logo">
     <nav class="nav nav-primary">
         <ul class="flex-sb">
-            <li><a href="#events">Events</a></li>
-            <li><a href="#about-us">About us</a></li>
-            <li><a href="#partners">Our partners</a></li>
-            <li><a href="#contacts">Contacts</a></li>
+            <li><a href="/#events">Events</a></li>
+            <li><a href="/#about-us">About us</a></li>
+            <li><a href="/#partners">Our partners</a></li>
+            <li><a href="/#contacts">Contacts</a></li>
         </ul>
     </nav>
     <div class="header-btn-group flex-sb">
-        <a href="#contacts" class="btn-header host-event-btn">Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
+        <a href="/#contacts" class="btn-header host-event-btn">Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
         <?php if ( ! is_user_logged_in() ) : ?>
             <button class="btn-header signup-btn" id="header-signup-btn">Newsletter</button>
         <?php endif; ?>

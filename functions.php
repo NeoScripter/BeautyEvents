@@ -3,7 +3,8 @@
 define('VITE_DEV_SERVER', 'https://localhost:5173');
 
 // Stylesheets
-function load_css() {
+function load_css()
+{
     wp_enqueue_style(
         'local-fonts',
         get_template_directory_uri() . '/assets/fonts/local-fonts.css',
@@ -16,55 +17,57 @@ function load_css() {
         'theme-style',
         get_template_directory_uri() . '/assets/dist/assets/style.css',
         [],
-        file_exists( $dist_path . '/style.css' ) ? filemtime( $dist_path . '/style.css' ) : '1.0.0'
+        file_exists($dist_path . '/style.css') ? filemtime($dist_path . '/style.css') : '1.0.0'
     );
 }
-add_action( 'wp_enqueue_scripts', 'load_css' );
+add_action('wp_enqueue_scripts', 'load_css');
 
 // JavaScript
-function load_js() {
+function load_js()
+{
     $dist_file  = get_template_directory() . '/assets/dist/assets/main.js';
     $dist_url   = get_template_directory_uri() . '/assets/dist/assets/main.js';
     $dev_url    = VITE_DEV_SERVER . '/assets/src/js/main.js';
 
-    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script('jquery');
 
-    if ( file_exists( $dist_file ) ) {
+    if (file_exists($dist_file)) {
         // Production — load built file
         wp_enqueue_script(
             'theme-script',
             $dist_url,
-            [ 'jquery' ],
-            filemtime( $dist_file ),
+            ['jquery'],
+            filemtime($dist_file),
             true
         );
     } else {
         // Dev — load from Vite dev server
-        wp_enqueue_script( 'vite-client', VITE_DEV_SERVER . '/@vite/client', [], null, false );
-        wp_enqueue_script( 'theme-script', $dev_url, [ 'jquery' ], null, true );
+        wp_enqueue_script('vite-client', VITE_DEV_SERVER . '/@vite/client', [], null, false);
+        wp_enqueue_script('theme-script', $dev_url, ['jquery'], null, true);
     }
 
     // Attach all localized data to theme-script
-    wp_localize_script( 'theme-script', 'popupData', [
+    wp_localize_script('theme-script', 'popupData', [
         'is_user_logged_in' => is_user_logged_in(),
     ]);
 
-    wp_localize_script( 'theme-script', 'ajax_vars', [
-        'ajax_url'           => admin_url( 'admin-ajax.php' ),
-        'registration_nonce' => wp_create_nonce( 'ajax-registration-nonce' ),
-        'login_nonce'        => wp_create_nonce( 'ajax-login-nonce' ),
+    wp_localize_script('theme-script', 'ajax_vars', [
+        'ajax_url'           => admin_url('admin-ajax.php'),
+        'registration_nonce' => wp_create_nonce('ajax-registration-nonce'),
+        'login_nonce'        => wp_create_nonce('ajax-login-nonce'),
     ]);
 }
-add_action( 'wp_enqueue_scripts', 'load_js' );
+add_action('wp_enqueue_scripts', 'load_js');
 
 // Mark Vite scripts as type="module"
-function add_module_type( $tag, $handle ) {
-    if ( in_array( $handle, [ 'vite-client', 'theme-script' ] ) ) {
-        return str_replace( 'text/javascript', 'module', $tag );
+function add_module_type($tag, $handle)
+{
+    if (in_array($handle, ['vite-client', 'theme-script'])) {
+        return str_replace('text/javascript', 'module', $tag);
     }
     return $tag;
 }
-add_filter( 'script_loader_tag', 'add_module_type', 10, 2 );
+add_filter('script_loader_tag', 'add_module_type', 10, 2);
 
 // Theme Options
 add_theme_support('menus');
@@ -320,7 +323,11 @@ function render_events($count, $offset = 0)
         <?php while ($query->have_posts()): $query->the_post(); ?>
             <div class="event-wrapper rounded-2xl">
                 <div class="event-content">
-                    <img src="<?php echo get_field('image'); ?>" alt="<?php the_title(); ?>" class="event-img">
+                    <img
+                        loading="lazy"
+                        src="<?php echo get_field('image'); ?>"
+                        alt="<?php the_title(); ?>"
+                        class="event-img">
                     <ul class="event-ul">
                         <?php
                         $formats = get_field('format');

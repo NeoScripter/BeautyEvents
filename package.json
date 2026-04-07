@@ -1,5 +1,6 @@
 {
     "devDependencies": {
+        "@tailwindcss/typography": "^0.5.19",
         "autoprefixer": "^10.4.27",
         "browser-sync": "^3.0.4",
         "glob": "^13.0.6",

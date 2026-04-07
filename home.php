@@ -40,7 +40,7 @@ get_header();
 
                         <div class="mt-auto pt-4">
                             <a href="<?php the_permalink(); ?>"
-                                class="inline-block bg-pink-600 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-pink-700 transition-colors">
+                               class="inline-block bg-pink-600 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-pink-700 transition-colors">
                                 Read more
                             </a>
                         </div>

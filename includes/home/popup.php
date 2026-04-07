@@ -7,10 +7,10 @@
         </div>
         <nav class="nav nav-secondary">
             <ul class="flex-sb">
-                <li><a href="#events">Events</a></li>
-                <li><a href="#about-us">About us</a></li>
-                <li><a href="#partners">Our partners</a></li>
-                <li><a href="#contacts">Contacts</a></li>
+                <li><a href="/#events">Events</a></li>
+                <li><a href="/#about-us">About us</a></li>
+                <li><a href="/#partners">Our partners</a></li>
+                <li><a href="/#contacts">Contacts</a></li>
             </ul>
         </nav>
         <div class="popup-menu__btn-wrapper">
@@ -19,7 +19,7 @@
                     <button class="btn-header signup-btn" id="header-signup-btn-mobile">Newsletter</button>
                 <?php endif; ?>
             </div>
-            <a href="#contacts" class="btn-header host-event-btn">
+            <a href="/#contacts" class="btn-header host-event-btn">
                 Host your event <?php include get_template_directory() . "/assets/images/svgs/top-right-corner-arrow.svg"; ?>
             </a>
         </div>
