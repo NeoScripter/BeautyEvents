@@ -11,7 +11,12 @@
                 </ul>
             </nav>
             <div class="footer-btn-group">
-                <a href="/#contacts" class="btn-footer host-event-btn">Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
+                <a
+                    class="btn-footer host-event-btn"
+                    href="https://tally.so/r/rjLXOp"
+                    target="_blank">
+                    Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?>
+                </a>
                 <a href="/#contacts" class="btn-footer host-event-btn">Become our partner<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
             </div>
         </div>

@@ -19,8 +19,11 @@
                     <button class="btn-header signup-btn" id="header-signup-btn-mobile">Newsletter</button>
                 <?php endif; ?>
             </div>
-            <a href="/#contacts" class="btn-header host-event-btn">
-                Host your event <?php include get_template_directory() . "/assets/images/svgs/top-right-corner-arrow.svg"; ?>
+            <a
+                class="btn-header host-event-btn"
+                href="https://tally.so/r/rjLXOp"
+                target="_blank">
+                Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?>
             </a>
         </div>
         <div>

@@ -42,7 +42,12 @@
             </ul>
         </nav>
         <div class="header-btn-group flex-sb">
-            <a href="/#contacts" class="btn-header host-event-btn">Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
+            <a
+                href="https://tally.so/r/rjLXOp"
+                target="_blank"
+                class="btn-header host-event-btn">
+                Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?>
+            </a>
             <?php if (! is_user_logged_in()) : ?>
                 <button class="btn-header signup-btn" id="header-signup-btn">Newsletter</button>
             <?php endif; ?>
