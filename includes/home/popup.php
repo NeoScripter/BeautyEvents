@@ -9,7 +9,7 @@
             <ul class="flex-sb">
                 <li><a href="/#events">Events</a></li>
                 <li><a href="/about-me">About us</a></li>
-                <li><a href="/#partners">Our partners</a></li>
+                <li><a href="/blog">Blog</a></li>
                 <li><a href="/#contacts">Contacts</a></li>
             </ul>
         </nav>

@@ -6,7 +6,7 @@
                     <li><img src="<?php echo get_template_directory_uri() . '/assets/images/footer-red-triangle.png'; ?>" alt="triangle" class="footer-nav-img"></li>
                     <li><a href="/#events">Events</a></li>
                     <li><a href="/about-me">About us</a></li>
-                    <li><a href="/#partners">our partners</a></li>
+                    <li><a href="/blog">Blog</a></li>
                     <li><a href="/#contacts">contacts</a></li>
                 </ul>
             </nav>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="footer-flex-group-middle">
-             <div class="footer-div-large">
+            <div class="footer-div-large">
                 <h3>Reach out to us</h3>
                 <p>and share details about your project.</p>
             </div>
@@ -24,7 +24,7 @@
                 <h4>E-mail:</h4>
                 <p>beautytd2022@gmail.com</p>
             </div>
-             <div class="footer-svg-group">
+            <div class="footer-svg-group">
                 <a class="footer-svg-link" href="https://t.me/beauty_training_design"><?php include get_template_directory() . '/assets/images/svgs/telegram.svg'; ?></a>
                 <a class="footer-svg-link insta" href="https://www.instagram.com/beauty4online?igsh=MW53bW96djlmam9pZQ=="><?php include get_template_directory() . '/assets/images/svgs/insta.svg'; ?></a>
                 <a class="footer-svg-link" href="https://www.facebook.com/profile.php?id=100088276970688&mibextid=LQQJ4d"><?php include get_template_directory() . '/assets/images/svgs/fb.svg'; ?></a>
@@ -42,6 +42,7 @@
     </div>
 </footer>
 
-<?php wp_footer();?>
+<?php wp_footer(); ?>
 </body>
+
 </html>
