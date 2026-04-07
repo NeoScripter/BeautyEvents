@@ -15,20 +15,13 @@
         </nav>
         <div class="popup-menu__btn-wrapper">
             <div class="flex-sb">
-                <?php if (is_user_logged_in()) : ?>
-                    <a href="<?php echo wp_logout_url(home_url()); ?>" class="btn-header login-btn">Log out</a>
-                    <?php $current_user = wp_get_current_user();; ?>
-                    <div class="user-name">
-                        <img src="<?php echo get_template_directory_uri() .
-                                        "/assets/images/svgs/user.svg"; ?>" alt="user profile" class="userprofile-svg"> Hello, <?php echo esc_html($current_user->display_name) . '!'; ?>
-                    </div>
-                <?php else : ?>
-                    <button class="btn-header login-btn" id="header-login-btn">Log in</button>
-                    <button class="btn-header signup-btn" id="header-signup-btn">Sign up</button>
+                <?php if (! is_user_logged_in()) : ?>
+                    <button class="btn-header signup-btn" id="header-signup-btn-mobile">Newsletter</button>
                 <?php endif; ?>
             </div>
-            <a href="#contacts" class="btn-header host-event-btn">Host your event <?php include get_template_directory() .
-                                                                                        "/assets/images/svgs/top-right-corner-arrow.svg"; ?></a>
+            <a href="#contacts" class="btn-header host-event-btn">
+                Host your event <?php include get_template_directory() . "/assets/images/svgs/top-right-corner-arrow.svg"; ?>
+            </a>
         </div>
         <div>
             <div class="popup-menu-bottom">
@@ -41,17 +34,20 @@
                     <p>beautytd2022@gmail.com</p>
                 </div>
                 <div class="flex-sb svg-group">
-                    <a class="header-svg-link" href="https://t.me/beauty_training_design"><?php include get_template_directory() .
-                                                                                                "/assets/images/svgs/telegram.svg"; ?></a>
-                    <a class="header-svg-link insta" href="https://www.instagram.com/beauty4online?igsh=MW53bW96djlmam9pZQ=="><?php include get_template_directory() .
-                                                                                                                                    "/assets/images/svgs/insta.svg"; ?></a>
-                    <a class="header-svg-link" href="https://www.facebook.com/profile.php?id=100088276970688&mibextid=LQQJ4d"><?php include get_template_directory() .
-                                                                                                                                    "/assets/images/svgs/fb.svg"; ?></a>
-                    <a class="header-svg-link" href="https://pin.it/2xZ05rpes"><?php include get_template_directory() .
-                                                                                    "/assets/images/svgs/pininterest.svg"; ?></a>
+                    <a class="header-svg-link" href="https://t.me/beauty_training_design">
+                        <?php include get_template_directory() . "/assets/images/svgs/telegram.svg"; ?>
+                    </a>
+                    <a class="header-svg-link insta" href="https://www.instagram.com/beauty4online?igsh=MW53bW96djlmam9pZQ==">
+                        <?php include get_template_directory() . "/assets/images/svgs/insta.svg"; ?>
+                    </a>
+                    <a class="header-svg-link" href="https://www.facebook.com/profile.php?id=100088276970688&mibextid=LQQJ4d">
+                        <?php include get_template_directory() . "/assets/images/svgs/fb.svg"; ?>
+                    </a>
+                    <a class="header-svg-link" href="https://pin.it/2xZ05rpes">
+                        <?php include get_template_directory() . "/assets/images/svgs/pininterest.svg"; ?>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

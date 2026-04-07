@@ -1,5 +1,5 @@
-<section class="mb-20 mt-10 md:mb-30 md:mt-15">
-    <h2 class="ads-heading flex-sb">Broaden your network
+<section class="mb-10 mt-5 md:mb-20 md:mt-10">
+    <h2 class="ads-heading flex-sb">Featured Brands
         <div class="arrow-holder flex-sb">
             <div class="carousel-arrow prev"><?php include get_template_directory() . "/assets/images/svgs/carousel-arrow-left.svg"; ?></div>
             <div class="carousel-arrow next"><?php include get_template_directory() . "/assets/images/svgs/carousel-arrow-right.svg"; ?></div>

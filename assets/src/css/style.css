@@ -185,21 +185,31 @@ body {
     position: fixed;
     top: 0;
     right: 0;
-    width: min(100%, 390px);
     z-index: 10;
-    transform: translateX(100%);
+    width: 100%;
+    backdrop-filter: blur(7px);
+    opacity: 0;
+    pointer-events: none;
     color: white;
-    transition: transform 1s ease;
+    transition: opacity 0.3s ease-in-out;
     min-height: 100vh;
     min-height: 100dvh;
     overflow-y: auto;
     z-index: 110;
 }
 
+.popup-menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .popup-menu {
+    width: min(100%, 390px);
     position: absolute;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
     top: 0;
-    width: 100%;
+    right: 0;
     display: grid;
     gap: 32px;
     padding: 24px 32px;
@@ -207,6 +217,9 @@ body {
     background-color: var(--footer-bg-clr);
 }
 
+.popup-menu-overlay.active .popup-menu {
+    transform: translateX(0%);
+}
 .popup-menu > div:last-of-type {
     display: grid;
     align-items: end;
@@ -1559,10 +1572,10 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible-visible) {
 .reg-wrapper {
     position: absolute;
     z-index: 21;
-    top: 0;
-    left: 50%;
-    translate: -50%;
-    width: min(100%, 1100px);
+    margin: auto;
+    inset: 0;
+    height: fit-content;
+    width: min(100%, 800px);
     padding: 20px;
     background-color: #ebebeb;
     color: #242424;
@@ -1580,7 +1593,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible-visible) {
 .reg-top {
     display: flex;
     align-items: flex-start;
-    gap: 32px;
+    gap: 28px;
     margin-bottom: 16px;
 }
 
@@ -1602,8 +1615,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible-visible) {
 
 .reg-content {
     display: grid;
-    height: 721px;
-    grid-template-columns: 1fr 662px;
+    grid-template-columns: 1fr 422px;
 }
 
 .reg-bg-img-wrapper {
@@ -1625,7 +1637,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible-visible) {
     background-color: #fffefe;
     position: absolute;
     padding: 24px;
-    left: -10px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     width: clamp(392px, 54vw, 600px);

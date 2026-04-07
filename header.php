@@ -30,16 +30,8 @@
     </nav>
     <div class="header-btn-group flex-sb">
         <a href="#contacts" class="btn-header host-event-btn">Host your event<?php include get_template_directory() . '/assets/images/svgs/top-right-corner-arrow.svg'; ?></a>
-        <?php if ( is_user_logged_in() ) : ?>
-            <a href="<?php echo wp_logout_url( home_url() ); ?>" class="btn-header login-btn">Log out</a>
-            <?php $current_user = wp_get_current_user(); ;?>
-                <div class="user-name">
-                    <img src="<?php echo get_template_directory_uri() .
-                    "/assets/images/svgs/user.svg"; ?>" alt="user profile" class="userprofile-svg"> Hello, <?php echo esc_html($current_user->display_name) . '!';?>
-                </div>
-        <?php else : ?>
-            <button class="btn-header login-btn" id="header-login-btn">Log in</button>
-            <button class="btn-header signup-btn" id="header-signup-btn">Sign up</button>
+        <?php if ( ! is_user_logged_in() ) : ?>
+            <button class="btn-header signup-btn" id="header-signup-btn">Newsletter</button>
         <?php endif; ?>
     </div>
     <img src="<?php echo get_template_directory_uri() . '/assets/images/svgs/burger-menu-closed.svg';?>" alt="burger-menu" class="burger-menu" tabindex="0">

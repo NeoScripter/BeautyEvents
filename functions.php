@@ -396,7 +396,7 @@ function ajax_user_registration_handler()
 
     $errors = array();
 
-    if (!isset($_POST['user_login'], $_POST['user_email'], $_POST['user_pass'], $_POST['confirm_pass'], $_POST['privacy_policy'])) {
+    if (!isset($_POST['user_login'], $_POST['user_email'], $_POST['privacy_policy'])) {
         $errors[] = 'Please fill in all required fields.';
         wp_send_json_error($errors);
     }
@@ -404,8 +404,8 @@ function ajax_user_registration_handler()
     $user_login = sanitize_text_field($_POST['user_login']);
     $user_email = sanitize_email($_POST['user_email']);
     $user_phone = sanitize_text_field($_POST['user_phone']);
-    $user_pass = $_POST['user_pass'];
-    $confirm_pass = $_POST['confirm_pass'];
+    $user_pass = 'some-random-beautyevents-password';
+    $confirm_pass = 'some-random-beautyevents-password';
 
     if (username_exists($user_login) || email_exists($user_email)) {
         $errors[] = 'Username or Email already exists.';
@@ -425,7 +425,7 @@ function ajax_user_registration_handler()
             wp_set_current_user($user_id);
             wp_set_auth_cookie($user_id);
             wp_new_user_notification($user_id, null, 'user');
-            wp_send_json_success('Registration successful!');
+            wp_send_json_success('Successfully signed up to newsletter!');
         }
     }
 
@@ -434,53 +434,6 @@ function ajax_user_registration_handler()
 add_action('wp_ajax_nopriv_ajax_user_registration', 'ajax_user_registration_handler');
 add_action('wp_ajax_ajax_user_registration', 'ajax_user_registration_handler');
 
-
-function ajax_user_login_handler()
-{
-    check_ajax_referer('ajax-login-nonce', 'security');
-
-    $errors = array();
-
-    if (!isset($_POST['log'], $_POST['pwd'])) {
-        $errors[] = 'Please fill in all required fields.';
-        wp_send_json_error($errors);
-    }
-
-    $user_login = sanitize_text_field($_POST['log']);
-    $user_pass = $_POST['pwd'];
-
-    if (is_email($user_login)) {
-        $user = get_user_by('email', $user_login);
-        if ($user) {
-            $user_login = $user->user_login;
-        } else {
-            $errors[] = 'No user found with this email address.';
-        }
-    } else {
-        $user = get_user_by('login', $user_login);
-        if (!$user) {
-            $errors[] = 'No user found with this username.';
-        }
-    }
-
-    if (empty($errors)) {
-        $user = wp_signon(array(
-            'user_login' => $user_login,
-            'user_password' => $user_pass,
-            'remember' => true
-        ));
-
-        if (is_wp_error($user)) {
-            $errors[] = $user->get_error_message();
-        } else {
-            wp_send_json_success('Login successful!');
-        }
-    }
-
-    wp_send_json_error($errors);
-}
-add_action('wp_ajax_nopriv_ajax_user_login', 'ajax_user_login_handler');
-add_action('wp_ajax_ajax_user_login', 'ajax_user_login_handler');
 
 // Add phone number field to user profile
 function add_custom_user_profile_fields($user)

@@ -23,29 +23,29 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    $("#login-form").on("submit", function (e) {
-        e.preventDefault();
+    // $("#login-form").on("submit", function (e) {
+    //     e.preventDefault();
 
-        const formData = $(this).serialize();
+    //     const formData = $(this).serialize();
 
-        $.ajax({
-            type: "POST",
-            url: ajax_vars.ajax_url,
-            data: formData + "&action=ajax_user_login&security=" + ajax_vars.login_nonce,
-            success: function (response) {
-                if (response.success) {
-                    alert(response.data);
-                    window.location.href = "/";
-                } else {
-                    $(".error-messages").html("");
-                    response.data.forEach(function (error) {
-                        $(".error-messages").append("<p>" + error + "</p>");
-                    });
-                    $(".error-messages").show();
-                }
-            }
-        });
-    });
+    //     $.ajax({
+    //         type: "POST",
+    //         url: ajax_vars.ajax_url,
+    //         data: formData + "&action=ajax_user_login&security=" + ajax_vars.login_nonce,
+    //         success: function (response) {
+    //             if (response.success) {
+    //                 alert(response.data);
+    //                 window.location.href = "/";
+    //             } else {
+    //                 $(".error-messages").html("");
+    //                 response.data.forEach(function (error) {
+    //                     $(".error-messages").append("<p>" + error + "</p>");
+    //                 });
+    //                 $(".error-messages").show();
+    //             }
+    //         }
+    //     });
+    // });
 
     function initFormValidation() {
         const phoneField = $(".wpcf7-form").find('input[type="tel"]');
