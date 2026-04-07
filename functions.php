@@ -349,7 +349,7 @@ function render_events($count, $offset = 0)
                         <ul class="event-details">
                             <li class="event-date"><?php echo get_field('event_month') . ' ' . get_field('event_day') . ', ' . get_field('event_year'); ?></li>
                             <li class="event-time-zone"><?php echo get_field('time_zone'); ?></li>
-                            <li class="event-venue"><?php echo get_field('venue'); ?></li>
+                            <li class="event-venue"><?php echo get_field('location'); ?></li>
                         </ul>
                         <a href="<?php echo get_field('link'); ?>" target="_blank" class="event-join">Details</a>
                     </div>
