@@ -241,7 +241,7 @@ add_action('wp', 'schedule_past_events_mover');
 
 add_action('move_past_events', 'move_past_events_to_new_post_type');
 
-function render_events($count)
+function render_events($count, $offset = 0)
 {
     $meta_query = ['relation' => 'AND'];
 
@@ -305,6 +305,7 @@ function render_events($count)
     $args = [
         'post_type' => 'events',
         'posts_per_page' => $count,
+        'offset' => $offset,
         'meta_query' => $meta_query,
         'meta_key' => 'event_date',
         'orderby' => 'meta_value',
@@ -360,8 +361,9 @@ function render_events($count)
 function load_more_events()
 {
     $count = isset($_GET['count']) ? intval($_GET['count']) : 18;
+    $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 6;
 
-    echo render_events($count);
+    echo render_events($count, $offset);
     wp_die();
 }
 

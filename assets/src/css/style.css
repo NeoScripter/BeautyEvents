@@ -108,7 +108,7 @@ body {
 }
 
 .nav a:hover,
-.nav a:focus-visible {
+.nav a:focus-visible-visible {
     text-decoration: underline 0.08em;
     text-underline-offset: 0.2em;
 }
@@ -146,7 +146,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.host-event-btn:is(:hover, :focus-visible, :active) {
+.host-event-btn:is(:hover, :focus-visible-visible, :active) {
     background-color: #fff;
     color: var(--footer-bg-clr);
 }
@@ -157,7 +157,7 @@ body {
     border: 0.08em solid var(--bg-color);
 }
 
-.login-btn:is(:focus-visible, :hover, :active) {
+.login-btn:is(:focus-visible-visible, :hover, :active) {
     --bg-color: #4f6486;
 }
 
@@ -167,7 +167,7 @@ body {
     background-color: var(--bg-color);
 }
 
-.signup-btn:focus-visible,
+.signup-btn:focus-visible-visible,
 .signup-btn:hover,
 .signup-btn:active {
     --bg-color: #ae3e64;
@@ -382,7 +382,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.cookie-policy a:is(:hover, :active, :focus) {
+.cookie-policy a:is(:hover, :active, :focus-visible) {
     color: var(--footer-bg-clr);
     background-color: #fff;
 }
@@ -398,7 +398,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.accept-cookies-btn:is(:hover, :active, :focus) {
+.accept-cookies-btn:is(:hover, :active, :focus-visible) {
     color: var(--footer-bg-clr);
     background-color: #fff;
 }
@@ -482,7 +482,7 @@ body {
 }
 
 .footer-nav a:hover,
-.footer-nav a:focus-visible {
+.footer-nav a:focus-visible-visible {
     text-decoration: underline 0.08em;
     text-underline-offset: 0.2em;
 }
@@ -579,7 +579,7 @@ body {
     text-transform: uppercase;
 }
 
-.footer-flex-group-bottom a:is(:hover, :focus-visible, :active) {
+.footer-flex-group-bottom a:is(:hover, :focus-visible-visible, :active) {
     text-decoration: underline 0.08em;
     text-underline-offset: 0.2em;
 }
@@ -654,19 +654,19 @@ body {
 }
 
 .custom-dropdown-button:hover,
-.custom-dropdown-button:focus {
+.custom-dropdown-button:focus-visible {
     outline: 2px solid #242424;
     font-weight: 600;
 }
 
 .view-all-button:hover,
-.view-all-button:focus {
+.view-all-button:focus-visible {
     outline: 2px solid #fff;
     font-weight: 600;
 }
 
 .display-filters-button:hover,
-.display-filters-button:focus {
+.display-filters-button:focus-visible {
     outline: 2px solid #242424;
     font-weight: 600;
 }
@@ -680,7 +680,7 @@ body {
     display: none;
     font-size: var(--search-bar-fs);
     cursor: pointer;
-    padding: 16px 8px;
+    padding: 8px 8px;
     border: 1px solid #242424;
     border-radius: 3rem;
     background-color: #fff;
@@ -761,7 +761,7 @@ body {
 }
 
 .dropdown-label:hover,
-.dropdown-label:focus {
+.dropdown-label:focus-visible {
     border-color: #000;
     outline: 1.5px solid #000;
     color: #000;
@@ -794,8 +794,8 @@ select[name='filter-year'] {
     width: max-content;
 }
 
-select[name='filter-month'] option:is(:hover, :active, :focus-visible),
-select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
+select[name='filter-month'] option:is(:hover, :active, :focus-visible-visible),
+select[name='filter-year'] option:is(:hover, :active, :focus-visible-visible) {
     background-color: #1a2c62;
     color: #fff;
 }
@@ -836,7 +836,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     transition: color border 0.3s ease-in-out;
 }
 
-.nested-dropdown .dropdown-label:is(:hover, :focus) {
+.nested-dropdown .dropdown-label:is(:hover, :focus-visible) {
     border-color: #1a2c62;
     outline: 1.5px solid #1a2c62;
     color: #fff;
@@ -957,7 +957,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     transition: all 0.3s ease;
 }
 
-.event-join:is(:hover, :focus, :active) {
+.event-join:is(:hover, :focus-visible, :active) {
     background-color: var(--pink);
     color: #fff;
 }
@@ -984,14 +984,14 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
 }
 
 #see-more-button:hover,
-#see-more-button:focus,
+#see-more-button:focus-visible,
 #see-more-button:active {
     border-color: var(--pink);
     color: var(--pink);
 }
 
 #see-more-button:hover path,
-#see-more-button:focus path,
+#see-more-button:focus-visible path,
 #see-more-button:active path {
     stroke: var(--pink);
 }
@@ -1069,7 +1069,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     z-index: 3;
 }
 
-.more-details-link:is(:hover, :focus, :active) {
+.more-details-link:is(:hover, :focus-visible, :active) {
     color: var(--pink);
     border-color: var(--pink);
 }
@@ -1102,11 +1102,11 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     border: 0.025em solid var(--body-txt, #242424);
 }
 
-.carousel-arrow:is(:hover, :focus) {
+.carousel-arrow:is(:hover, :focus-visible) {
     border-color: var(--pink);
 }
 
-.carousel-arrow:is(:hover, :focus) path {
+.carousel-arrow:is(:hover, :focus-visible) path {
     fill: var(--pink);
 }
 
@@ -1537,7 +1537,7 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     cursor: pointer;
 }
 
-.wpcf7-form input[type='submit']:is(:hover, :focus, :active) {
+.wpcf7-form input[type='submit']:is(:hover, :focus-visible, :active) {
     color: var(--pink);
     border-color: var(--pink);
 }
@@ -1849,17 +1849,17 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     }
     .small-screen-filters {
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+        gap: 16px;
+        justify-content: center;
     }
     .small-screen-filters .view-all-button {
-        width: 100%;
+        width: min(100%, 15rem);
     }
     .small-screen-filters .display-filters-button {
-        width: calc(50% - 5px);
+        width: min(100%, 15rem);
     }
     .small-screen-filters .clear-all-button {
-        width: calc(50% - 5px);
+        width: min(100%, 15rem);
     }
 
     .filter-container .view-all-button,
@@ -1868,8 +1868,9 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     }
     .filter-container {
         position: absolute;
-        top: 120px;
-        left: 0;
+        top: 60px;
+        left: 50%;
+        transform: translate(-50%);
         background-color: #fff;
         flex-direction: column;
         width: min(100%, 400px);
@@ -1929,8 +1930,8 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
         display: none;
     }
     .carousel-track {
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20.5rem, 1fr));
         gap: 16px;
     }
     .carousel-slide a {
@@ -2006,6 +2007,9 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
         gap: 0px;
         width: 100%;
     }
+    .filter-container {
+        top: 100px;
+    }
     .footer-flex-group-bottom {
         flex-wrap: wrap;
     }
@@ -2015,6 +2019,10 @@ select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     }
     .ads-grid-group {
         grid-template-columns: 1fr;
+    }
+    .small-screen-filters {
+        flex-direction: column;
+        align-items: center;
     }
     .contact-us {
         --_padding-block: 24px;

@@ -1,4 +1,4 @@
-<section>
+<section class="mb-20 mt-10 md:mb-30 md:mt-15">
     <h2 class="ads-heading flex-sb">Broaden your network
         <div class="arrow-holder flex-sb">
             <div class="carousel-arrow prev"><?php include get_template_directory() . "/assets/images/svgs/carousel-arrow-left.svg"; ?></div>

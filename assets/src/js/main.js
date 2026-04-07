@@ -160,11 +160,12 @@ document.addEventListener('DOMContentLoaded', () => {
         /*  checkClearBtn(); */
     }
 
-    if (popupData.is_user_logged_in) {
-        initFilters();
-    } else {
-        /*    checkClearBtn(); */
-    }
+    initFilters();
+    // if (popupData.is_user_logged_in) {
+    //     initFilters();
+    // } else {
+    //     checkClearBtn();
+    // }
 
     function showFilters() {
         const showFiltersBtn = document.getElementById('show-filters-btn');
@@ -184,26 +185,37 @@ document.addEventListener('DOMContentLoaded', () => {
             // if (!popupData.is_user_logged_in) {
             //     return;
             // }
-            let currentCount =
-                parseInt(seeMoreButton.getAttribute('data-count')) ?? 18;
-            let newCount = currentCount * 2;
+            const [total, top, bottom, increment] = [
+                'total',
+                'top',
+                'bottom',
+                'increment',
+            ].map(
+                (attr) =>
+                    parseInt(seeMoreButton.getAttribute(`data-${attr}`)) || 0
+            );
+            let newCount = bottom + increment;
 
             const currentUrl = new URL(window.location.href);
             const params = currentUrl.searchParams;
             params.set('count', newCount);
+            params.set('offset', top);
 
             const ajaxUrl = `/wp-admin/admin-ajax.php?action=load_more_events&${params.toString()}`;
 
             fetch(ajaxUrl)
                 .then((response) => response.text())
                 .then((data) => {
-                    document.querySelector('.event-grid-group').innerHTML =
-                        data;
+                    const eventContainer =
+                        document.querySelector('#event-grid-bottom');
+                    eventContainer.innerHTML = data;
 
                     const currentEventCount =
-                        document.getElementsByClassName('event-wrapper').length;
+                        eventContainer.getElementsByClassName(
+                            'event-wrapper'
+                        ).length;
 
-                    seeMoreButton.setAttribute('data-count', newCount);
+                    seeMoreButton.setAttribute('data-bottom', newCount);
 
                     if (newCount > currentEventCount) {
                         seeMoreButton.style.display = 'none';

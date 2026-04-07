@@ -12,15 +12,32 @@ get_header();
         <form method="get" action="<?php echo esc_url(home_url("/") . '#events'); ?>" class="event-filter-form">
             <?php include get_template_directory() . "/includes/filter-content.php"; ?>
         </form>
-        <?php $initial_count = 18; ?>
-        <div class="event-grid-group">
-            <?php echo render_events($initial_count); ?>
+        <?php
+        $total_events = 12;
+        $top_events_count = 6;
+        $bottom_events_count = $total_events - $top_events_count;
+        $increment_step = 12;
+        ?>
+        <div class="event-grid-group" id='event-grid-top'>
+            <?php echo render_events($top_events_count); ?>
         </div>
-        <button id="see-more-button" data-count="<?php echo $initial_count; ?>">See More <?php include get_template_directory() . "/assets/images/svgs/top-right-corner-arrow.svg"; ?></button>
+        <?php get_template_part('includes/home/partners'); ?>
+
+        <div class="event-grid-group" id='event-grid-bottom'>
+            <?php echo render_events($bottom_events_count, $top_events_count); ?>
+        </div>
+        <button
+            id="see-more-button"
+            data-total="<?php echo $total_events; ?>"
+            data-top="<?php echo $top_events_count; ?>"
+            data-bottom="<?php echo $bottom_events_count; ?>"
+            data-increment="<?php echo $increment_step; ?>">
+            See More 
+            <?php include get_template_directory() . "/assets/images/svgs/top-right-corner-arrow.svg"; ?>
+        </button>
     </section>
 
 
-    <?php get_template_part('includes/home/partners'); ?>
 
     <div class="mt-8">
         <div

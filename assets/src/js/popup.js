@@ -41,17 +41,17 @@ jQuery(document).ready(function ($) {
             event.stopPropagation();
         });
 
-        $('.custom-dropdown-button').on('click', (event) => {
-            event.preventDefault();
-            $('#reg-popup').fadeIn();
-            $('.signup-form').fadeIn();
-        });
+        // $('.custom-dropdown-button').on('click', (event) => {
+        //     event.preventDefault();
+        //     $('#reg-popup').fadeIn();
+        //     $('.signup-form').fadeIn();
+        // });
 
-        $('.view-all-button').on('click', (event) => {
-            event.preventDefault();
-            $('#reg-popup').fadeIn();
-            $('.signup-form').fadeIn();
-        });
+        // $('.view-all-button').on('click', (event) => {
+        //     event.preventDefault();
+        //     $('#reg-popup').fadeIn();
+        //     $('.signup-form').fadeIn();
+        // });
 
         $('#login-btn').on('click', function () {
             $('.signup-form').fadeOut();
