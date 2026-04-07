@@ -14,6 +14,10 @@ jQuery(document).ready(function ($) {
         document.documentElement.style.overflow = 'auto';
     }
 
+    if (!popupData.is_user_logged_in) {
+        setTimeout(showForm, 1000 * 90);
+    }
+
     $('#reg-popup').on('click', (event) => {
         event.stopPropagation();
         closeForm();

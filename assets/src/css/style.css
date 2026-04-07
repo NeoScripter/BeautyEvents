@@ -109,7 +109,7 @@ body {
 }
 
 .nav a:hover,
-.nav a:focus-visible-visible {
+.nav a:focus-visible {
     text-decoration: underline 0.08em;
     text-underline-offset: 0.2em;
 }
@@ -147,7 +147,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.host-event-btn:is(:hover, :focus-visible-visible, :active) {
+.host-event-btn:is(:hover, :focus-visible, :active) {
     background-color: #fff;
     color: var(--footer-bg-clr);
 }
@@ -158,7 +158,7 @@ body {
     border: 0.08em solid var(--bg-color);
 }
 
-.login-btn:is(:focus-visible-visible, :hover, :active) {
+.login-btn:is(:focus-visible, :hover, :active) {
     --bg-color: #4f6486;
 }
 
@@ -168,7 +168,7 @@ body {
     background-color: var(--bg-color);
 }
 
-.signup-btn:focus-visible-visible,
+.signup-btn:focus-visible,
 .signup-btn:hover,
 .signup-btn:active {
     --bg-color: #ae3e64;
@@ -504,7 +504,7 @@ body {
 }
 
 .footer-nav a:hover,
-.footer-nav a:focus-visible-visible {
+.footer-nav a:focus-visible {
     text-decoration: underline 0.08em;
     text-underline-offset: 0.2em;
 }
@@ -601,7 +601,7 @@ body {
     text-transform: uppercase;
 }
 
-.footer-flex-group-bottom a:is(:hover, :focus-visible-visible, :active) {
+.footer-flex-group-bottom a:is(:hover, :focus-visible, :active) {
     text-decoration: underline 0.08em;
     text-underline-offset: 0.2em;
 }
@@ -816,8 +816,8 @@ select[name='filter-year'] {
     width: max-content;
 }
 
-select[name='filter-month'] option:is(:hover, :active, :focus-visible-visible),
-select[name='filter-year'] option:is(:hover, :active, :focus-visible-visible) {
+select[name='filter-month'] option:is(:hover, :active, :focus-visible),
+select[name='filter-year'] option:is(:hover, :active, :focus-visible) {
     background-color: #1a2c62;
     color: #fff;
 }
