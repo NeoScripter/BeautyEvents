@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     function showForm() {
-        $('#reg-popup').fadeIn();
+        document.getElementById('reg-popup').classList.add('active');
         $('.signup-form').fadeIn();
         $('.close-reg').show();
         $('.error-messages').text('');
@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
     }
 
     function closeForm() {
-        $('#reg-popup').fadeOut();
+        document.getElementById('reg-popup').classList.remove('active');
         $('.signup-form').fadeOut();
         $('.close-reg').hide();
         document.documentElement.style.overflow = 'auto';
